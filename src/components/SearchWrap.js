@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {updateHistory,clearHistory} from '../action'
-import Search from '../components/SearchInput'; 
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import Search from '../components/SearchInput';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const storeResults = []
 
@@ -21,13 +23,17 @@ class SearchWrap extends Component {
               <div class = "resultsTitle">
                 Recent Searches
               </div>
-              <ListGroup className = "RecentSearchesWrapper">
+              <List className = "RecentSearchesWrapper">
                 {
                   this.props.renderResults.map(function(name,index){
-                    return <ListGroupItem  className = "recentSearchLi" key = {index}> {name} </ListGroupItem>
+                    return (
+                      <ListItem className = "listElement">
+                        <ListItemText primary={name}/>
+                      </ListItem>
+                    )
                   })
                 }
-              </ListGroup>
+              </List>
               <div className = "resultsWrapper">
                 <div className = "resultsCountCont">
                   <span className = "resultsCount">
