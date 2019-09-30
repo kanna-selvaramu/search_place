@@ -21,7 +21,7 @@ class SearchWrap extends Component {
           <div class = "SearchResultsWrap">
             <div class = "resultsCont">
               <div class = "resultsTitle">
-                Recent Searches
+                You recently searched for
               </div>
               <List className = "RecentSearchesWrapper">
                 {
