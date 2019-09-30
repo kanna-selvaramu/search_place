@@ -2,7 +2,7 @@
 
 To design one simple single page and use Google Place Autocomplete to find places in react and store the recent searches using redux
 
-#Steps to beginwith 
+# Steps to beginwith 
 
 1. Clone this repo
 
