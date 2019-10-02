@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import DirectionsIcon from '@material-ui/icons/Directions';
 import { loadScriptURL } from '../constants/scriptURL';
 import defaultMessages from '../constants/staticText';
+import MAP_JSON from '../constants/map';
 
 class Search extends Component {
   googleMapRef = React.createRef()
@@ -41,17 +42,17 @@ class Search extends Component {
   
   createGoogleMap = () =>
     new window.google.maps.Map(this.googleMapRef.current, {
-      zoom: 16,
+      zoom: MAP_JSON.zoom,
       center: {
-        lat: -33.8688,
-        lng: 151.2195,
+        lat: MAP_JSON.defaultLocation.lat,
+        lng: MAP_JSON.defaultLocation.lng,
       },
       disableDefaultUI: true,
   })
 
   createMarker = () =>
     new window.google.maps.Marker({
-      position: { lat: -33.8688, lng: 151.2195 },
+      position: { lat: MAP_JSON.defaultLocation.lat, lng: MAP_JSON.defaultLocation.lng },
       map: this.googleMap,
   })
 
@@ -65,7 +66,7 @@ class Search extends Component {
                 <IconButton className="iconButton" aria-label="menu">
                   <MenuIcon />
                 </IconButton>
-                <InputBase className="input" id = "autocomplete" placeholder= {defaultMessages.searchPlaces} inputProps={{ 'aria-label': defaultMessages.searchPlaces }}/>
+                <InputBase className="input" id = "autocomplete" placeholder= {defaultMessages.searchPlaces}               inputProps={{ 'aria-label': defaultMessages.searchPlaces }}/>
                 <IconButton className="iconButton" aria-label="search">
                   <SearchIcon />
                 </IconButton>
