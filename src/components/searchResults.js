@@ -10,6 +10,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+/* This component shows the recent search history, which can be totally reset. Also, each search history can be deleted individually. */
+
 class SearchResults extends Component { 
   constructor(props) 
   {
