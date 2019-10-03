@@ -14,7 +14,12 @@ class Search extends Component {
   googleMapRef = React.createRef()
   constructor(props) {
     super(props);
+    this.state = {
+      lat: MAP_JSON.defaultLocation.lat,
+      lng: MAP_JSON.defaultLocation.lng
+    }
     this.handleScriptLoad = this.handleScriptLoad.bind(this);
+    this.triggerMethod = this.triggerMethod.bind(this);
   }
 
   componentDidMount() {
@@ -24,35 +29,66 @@ class Search extends Component {
     script.onload = () => this.handleScriptLoad();
     document.body.appendChild(script);
   }
+
+  triggerMethod() {
+    this.props.triggerStoreMethod();
+  }
+
   handleScriptLoad() { 
     var options = {
       types: ['(cities)'],
     };
+    var _this = this;
 
     // Initialize Google Autocomplete functionality
     /*global google*/
-    this.autocomplete = new google.maps.places.Autocomplete(
+    var autocomplete = new google.maps.places.Autocomplete(
       document.getElementById('autocomplete'),
       options,
     ); 
-    this.autocomplete.addListener('place_changed',this.props.triggerStoreMethod);
-    this.googleMap = this.createGoogleMap();
-    this.marker = this.createMarker();  
+    autocomplete.addListener('place_changed', function(){
+      var place = autocomplete.getPlace();
+      if (place && place.geometry && place.geometry.location && place.geometry.location.lat()) {
+        _this.setState({
+          lat: place.geometry.location.lat()
+        });
+      }
+      else if(place && place.geometry && place.geometry.viewport && place.geometry.viewport.oa && place.geometry.viewport.oa.g) {
+        _this.setState({
+          lat: place.geometry.viewport.oa.g
+        });
+      }
+      if (place && place.geometry && place.geometry.location && place.geometry.location.lng()) {
+        _this.setState({
+          lng: place.geometry.location.lng()
+        });
+      }
+      else if(place && place.geometry && place.geometry.viewport && place.geometry.viewport.oa && place.geometry.viewport.oa.h) {
+        _this.setState({
+          lat: place.geometry.viewport.oa.h
+        });
+      }
+      _this.googleMap = _this.createGoogleMap();
+      _this.marker = _this.createMarker();  
+      _this.triggerMethod();
+    })
+    _this.googleMap = _this.createGoogleMap();
+    _this.marker = _this.createMarker();  
   }
   
   createGoogleMap = () =>
     new window.google.maps.Map(this.googleMapRef.current, {
       zoom: MAP_JSON.zoom,
       center: {
-        lat: MAP_JSON.defaultLocation.lat,
-        lng: MAP_JSON.defaultLocation.lng,
+        lat: this.state.lat,
+        lng: this.state.lng,
       },
       disableDefaultUI: true,
   })
 
   createMarker = () =>
     new window.google.maps.Marker({
-      position: { lat: MAP_JSON.defaultLocation.lat, lng: MAP_JSON.defaultLocation.lng },
+      position: { lat: this.state.lat, lng: this.state.lng },
       map: this.googleMap,
   })
 
