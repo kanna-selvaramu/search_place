@@ -4,6 +4,7 @@ import {updateHistory, clearHistory } from '../actions/searchActions'
 import Search from '../components/SearchInput';
 import SearchResults from '../components/searchResults';
 
+/* This component is designed to be the wrapper of the Input and Results component */
 
 class SearchWrap extends Component { 
   constructor(props) 
