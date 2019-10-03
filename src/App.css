@@ -10,6 +10,8 @@
   width: 700px;
   left: 50%;
   margin-left: -350px;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .resultsWrapper {
