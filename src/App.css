@@ -5,6 +5,11 @@
   margin: 40px auto 0px;
   max-width: 700px;
   background-color: #FFF;
+  position: absolute;
+  bottom: 20px;
+  width: 700px;
+  left: 50%;
+  margin-left: -350px;
 }
 
 .resultsWrapper {
@@ -29,7 +34,11 @@
 }
 
 .InpCont {
-  padding-bottom: 40px;
+  position: absolute;
+  left: 50%;
+  top: 0px;
+  margin-left: -350px;
+  z-index: 1;
 }
 
 .root {
@@ -53,24 +62,25 @@
   margin: 4;
 }
 
-.InpMapWrap {
-  padding-top: 40px;
-}
-
 .Map_Wrapper {
-  width: 700px;
-  height: 400px;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
+  display: flex;
 }
 
 div#google-map {
   margin: 0 auto;
   height: 100%;
+  flex: 1;
 }
 
 .searchPageWrap {
   background-color: #99d7fd;
-  padding-bottom: 40px;
+}
+
+.searchCont {
+  position: relative;
 }
 
 .listElement span{
