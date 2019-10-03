@@ -10,6 +10,8 @@ import { loadScriptURL } from '../constants/scriptURL';
 import defaultMessages from '../constants/staticText';
 import MAP_JSON from '../constants/map';
 
+/*This component is designed to have a google autocomplete location search box and a map with a marker pointing to the location that is searched. */
+
 class Search extends Component {
   googleMapRef = React.createRef()
   constructor(props) {
@@ -102,7 +104,7 @@ class Search extends Component {
                 <IconButton className="iconButton" aria-label="menu">
                   <MenuIcon />
                 </IconButton>
-                <InputBase className="input" id = "autocomplete" placeholder= {defaultMessages.searchPlaces}               inputProps={{ 'aria-label': defaultMessages.searchPlaces }}/>
+                <InputBase className="input" id = "autocomplete" placeholder= {defaultMessages.searchPlaces}  inputProps={{ 'aria-label': defaultMessages.searchPlaces }}/>
                 <IconButton className="iconButton" aria-label="search">
                   <SearchIcon />
                 </IconButton>
