@@ -6,6 +6,8 @@ To design one simple single page and use Google Place Autocomplete to find place
 
 ![alt text](https://raw.githubusercontent.com/kanna-selvaramu/search_place/master/screenshot/search_1.png) 
 
+![alt text](https://raw.githubusercontent.com/kanna-selvaramu/search_place/master/screenshot/search_2.png) 
+
 ![alt text](https://raw.githubusercontent.com/kanna-selvaramu/search_place/master/screenshot/search_3.png) 
 
 # Steps to beginwith 
